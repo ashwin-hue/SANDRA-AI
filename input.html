@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Crop Name</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        /* Ensure the video covers the entire background */
+        .bg-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+            object-fit: cover;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            color: #ffffff;
+            overflow: hidden;
+        }
+
+        .input-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 1;
+        }
+
+        .input {
+            background-color: #010201;
+            border: none;
+            width: 300px;
+            height: 50px;
+            border-radius: 10px;
+            color: white;
+            padding: 0 20px;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .input::placeholder {
+            color: #c0b9c0;
+        }
+
+        .input:focus {
+            outline: none;
+            background-color: #222;
+            box-shadow: 0 0 10px rgba(0, 200, 255, 0.7);
+        }
+
+        .btn-success {
+            background-color: #00c8ff;
+            border-color: #00c8ff;
+            color: #ffffff;
+            border-radius: 10px;
+            padding: 8px 16px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-top: 20px;
+            border: none;
+        }
+
+        .btn-success:hover {
+            background-color: #0099cc;
+            border-color: #0099cc;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <video class="bgvid" autoplay muted loop>
+        <source src="{{ url_for('static', filename='bgvid.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="input-container">
+        <input id="main" class="input" type="text" placeholder="Enter Crop Name">
+        <button type="submit" class="btn btn-success">Predict</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
